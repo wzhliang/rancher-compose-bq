@@ -3,7 +3,7 @@ jforg-artifactory:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
   tty: true
-  image: scandio/jfrog-artifactory:1.1
+  image: yunlzheng/artifactory-oss
   stdin_open: true
   ports:
-  - ${http_port}:80
+  - ${http_port}:8081
