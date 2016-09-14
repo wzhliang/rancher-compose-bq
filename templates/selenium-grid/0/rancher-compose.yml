@@ -1,6 +1,6 @@
 .catalog:
   name: selenium grid
-  version: "2.53.1"
+  version: "2.53.0"
   description: |
     Selenium Grid
   questions:
