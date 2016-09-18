@@ -1,7 +1,8 @@
 .catalog:
   name: 389 Directory Server
   version: 0.1
-  description: 389 Directory Server and phpLDAPadmin
+  description: The enterprise-class Open Source LDAP server for Linux.  |
+    open https://yourip/6443 and login with cn=Directory Manager and password.
   questions:
     - variable: "public_port"
       type: "int"
