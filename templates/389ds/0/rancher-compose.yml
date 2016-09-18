@@ -1,0 +1,11 @@
+.catalog:
+  name: 389 Directory Server
+  version: 0.1
+  description: 389 Directory Server
+  questions:
+    - variable: "public_port"
+      type: "int"
+      required: true
+      label: "HTTPs Port"
+      description: "HTTPS port for php my ldap admin"
+      default: "6443"
