@@ -1,7 +1,7 @@
-# Rancher Catalog
+# Wise2c Sponored Rancher Catalog
 
 # License
-Copyright (c) 2014-2015 [Rancher Labs, Inc.](http://rancher.com)
+Copyright (c) 2015-2016 [Wise2c, Inc.](http://www.wise2c.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
