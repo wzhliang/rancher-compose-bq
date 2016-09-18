@@ -1,0 +1,7 @@
+name: 389 Directory Server
+description: |
+    # 389 Directory Server and phpLDAPadmin |
+    The enterprise-class Open Source LDAP server for Linux.
+    open https://yourip/6443 and login with cn=Directory Manager and password.
+version: 0.1
+category: Networking
