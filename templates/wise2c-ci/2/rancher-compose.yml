@@ -29,5 +29,6 @@
       required: true
       default: "worker"
     - variable: worker_host_label_value
+      label: "Worker Host Lable Value"
       required: true
       default: "worker"
