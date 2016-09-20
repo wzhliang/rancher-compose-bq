@@ -36,6 +36,7 @@
       label: "Schedule Host Label Value"
       required: true
       type: "string"
+      default: "biz"
       description: |
         schedule host label value
     - variable: worker_host_label
