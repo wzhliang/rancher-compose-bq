@@ -1,18 +1,9 @@
 .catalog:
   name: wise2c-ci
-  version: "0.1-BETA"
+  version: "0.1-beta"
   description: |
     Wise2c Continuous Integration Solution Platform
   questions:
-    - variable: release_version
-      label: "Wise2c CI Version"
-      required: true
-      type: enum
-      options:
-        - 0.1-SNAPSHOT
-        - 0.2-SNAPSHOT
-      description: |
-        Wise2c CI Version
     - variable: http_port
       label: "Web Public Http Port"
       type: "int"
@@ -33,3 +24,10 @@
       type: "string"
       description: |
         schedule host label value
+    - variable: worker_host_label
+      label: "Worker Host Lable"
+      required: true
+      default: "worker"
+    - variable: worker_host_label_value
+      required: true
+      default: "worker"
