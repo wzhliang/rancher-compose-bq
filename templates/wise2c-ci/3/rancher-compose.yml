@@ -11,7 +11,7 @@
       default: 80
       description: |
         website public http port
-        
+
     - variable: sonarqube_http_port
       label: "Sonarqube Web Public Http Port"
       type: "int"
