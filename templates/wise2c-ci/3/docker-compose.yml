@@ -49,23 +49,58 @@ mysql-server:
   environment:
     MYSQL_ROOT_PASSWORD: my-secret-pw
     MYSQL_DATABASE: builderdb
-  labels:
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
   tty: true
   stdin_open: true
   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 rabbitmq:
   image: rabbitmq:3-management
-  labels:
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
   environment:
     - RABBITMQ_DEFAULT_USER=wise2c
     - RABBITMQ_DEFAULT_PASS=wise2c
+
 redis:
   image: redis
+
+postgres-server:
+  environment:
+    POSTGRES_USER: sonar
+    POSTGRES_PASSWORD: sonar
+  tty: true
+  image: postgres
+  stdin_open: true
+
+sonarqube:
+  environment:
+    SONARQUBE_JDBC_USERNAME: sonar
+    SONARQUBE_JDBC_PASSWORD: sonar
+    SONARQUBE_JDBC_URL: jdbc:postgresql://postgres-server/sonar
+  tty: true
+  image: sonarqube
+  links:
+  - postgres-server:postgres-server
+  stdin_open: true
+
+jforg-artifactory:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
+  tty: true
+  image: yunlzheng/artifactory-oss
+  stdin_open: true
+  ports:
+  - ${artifactory_http_port}:8081
+
+sonarqube-lb:
+  ports:
+  - ${sonarqube_http_port}:9000
+  tty: true
+  image: rancher/load-balancer-service
   labels:
     io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
+  links:
+  - sonarqube:sonarqube
+  stdin_open: true
 
 wise2ci-vip:
   image: rancher/load-balancer-service
@@ -79,49 +114,3 @@ wise2ci-vip:
     io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
     io.rancher.loadbalancer.target.wise2build-frontend: ${http_port}=80
     io.rancher.loadbalancer.target.wise2build-biz: ${http_port}/api=80, ${http_port}/sockjs=80
-
-jforg-artifactory:
-  labels:
-    io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
-  tty: true
-  image: yunlzheng/artifactory-oss
-  stdin_open: true
-  ports:
-  - ${artifactory_http_port}:8081
-
-postgres-server:
-  environment:
-    POSTGRES_USER: sonar
-    POSTGRES_PASSWORD: sonar
-  labels:
-    io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
-  tty: true
-  image: postgres
-  stdin_open: true
-
-sonarqube:
-  environment:
-    SONARQUBE_JDBC_USERNAME: sonar
-    SONARQUBE_JDBC_PASSWORD: sonar
-    SONARQUBE_JDBC_URL: jdbc:postgresql://postgres-server/sonar
-  labels:
-    io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
-  tty: true
-  image: sonarqube
-  links:
-  - postgres-server:postgres-server
-  stdin_open: true
-
-sonarqube-lb:
-  ports:
-  - ${sonarqube_http_port}:9000
-  tty: true
-  image: rancher/load-balancer-service
-  labels:
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
-  links:
-  - sonarqube:sonarqube
-  stdin_open: true
