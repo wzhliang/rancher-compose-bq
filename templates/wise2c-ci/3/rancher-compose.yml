@@ -43,11 +43,13 @@
       label: "Worker Host Lable"
       required: true
       default: "worker"
+      type: "string"
       description: |
         woker schedule host label
     - variable: worker_host_label_value
       label: "Worker Host Lable Value"
       required: true
       default: "worker"
+      type: "string"
       description: |
         worker schedule host label value
