@@ -11,6 +11,7 @@
       default: 80
       description: |
         website public http port
+        
     - variable: sonarqube_http_port
       label: "Sonarqube Web Public Http Port"
       type: "int"
@@ -18,6 +19,7 @@
       default: 9000
       description: |
         sonarqube website public http port
+
     - variable: artifactory_http_port
       label: "Artiactory Web Public Http Port"
       type: "int"
@@ -25,29 +27,17 @@
       default: 8081
       description: |
         sonarqube website public http port
-    - variable: schedule_host_label
-      label: "Schedule Host Label"
-      required: true
-      type: "string"
-      default: "wise2builder"
-      description: |
-        schedule host label
-    - variable: schedule_host_label_value
-      label: "Schedule Host Label Value"
+
+    - variable: biz_host_label
+      label: "WebSite Host Label"
       required: true
       type: "string"
       default: "biz"
       description: |
-        schedule host label value
+        Biz And Website schedule host label
+
     - variable: worker_host_label
       label: "Worker Host Lable"
-      required: true
-      default: "worker"
-      type: "string"
-      description: |
-        woker schedule host label
-    - variable: worker_host_label_value
-      label: "Worker Host Lable Value"
       required: true
       default: "worker"
       type: "string"

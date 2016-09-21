@@ -4,13 +4,13 @@ wise2build-frontend:
   tty: true
   labels:
     io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
+    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
 
 wise2build-biz:
   image: registry.aliyuncs.com/wise2c/build-biz:0.1-beta
   labels:
     io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
+    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
   links:
     - eureka-server
     - mysql-server
@@ -28,7 +28,7 @@ wise2build-worker:
     - rabbitmq
   labels:
     io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${worker_host_label}=${worker_host_label_value}
+    io.rancher.scheduler.affinity:host_label: wise2worker=${worker_host_label}
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /root/.jenkins/workspace:/root/.jenkins/workspace
@@ -36,9 +36,6 @@ wise2build-worker:
 
 eureka-server:
   image: registry.aliyuncs.com/wise2c/eureka-server:0.1-beta
-  labels:
-    io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
   tty: true
   stdin_open: true
 
@@ -84,7 +81,7 @@ sonarqube:
 jforg-artifactory:
   labels:
     io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
+    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
   tty: true
   image: yunlzheng/artifactory-oss
   stdin_open: true
@@ -97,7 +94,7 @@ sonarqube-lb:
   tty: true
   image: rancher/load-balancer-service
   labels:
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
+    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
   links:
   - sonarqube:sonarqube
   stdin_open: true
@@ -111,6 +108,6 @@ wise2ci-vip:
   - wise2build-frontend:wise2build-frontend
   - wise2build-biz:wise2build-biz
   labels:
-    io.rancher.scheduler.affinity:host_label: ${schedule_host_label}=${schedule_host_label_value}
+    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
     io.rancher.loadbalancer.target.wise2build-frontend: ${http_port}=80
     io.rancher.loadbalancer.target.wise2build-biz: ${http_port}/api=80, ${http_port}/sockjs=80
