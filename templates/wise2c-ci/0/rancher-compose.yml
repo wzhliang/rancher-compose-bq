@@ -1,18 +1,9 @@
 .catalog:
   name: wise2c-ci
-  version: "0.0.1-SNAPSHOT"
+  version: "0.1-beta"
   description: |
     Wise2c Continuous Integration Solution Platform
   questions:
-    - variable: release_version
-      label: "Wise2c CI Version"
-      required: true
-      type: enum
-      options:
-        - 0.1-SNAPSHOT
-        - 0.2-SNAPSHOT
-      description: |
-        Wise2c CI Version
     - variable: http_port
       label: "Web Public Http Port"
       type: "int"
@@ -20,16 +11,35 @@
       default: 80
       description: |
         website public http port
-    - variable: schedule_host_label
-      label: "Schedule Host Label"
+
+    - variable: sonarqube_http_port
+      label: "Sonarqube Web Public Http Port"
+      type: "int"
+      required: true
+      default: 9000
+      description: |
+        sonarqube website public http port
+
+    - variable: artifactory_http_port
+      label: "Artiactory Web Public Http Port"
+      type: "int"
+      required: true
+      default: 8081
+      description: |
+        sonarqube website public http port
+
+    - variable: biz_host_label
+      label: "WebSite Host Label"
       required: true
       type: "string"
-      default: "wise2builder"
+      default: "biz"
       description: |
-        schedule host label
-    - variable: schedule_host_label_value
-      label: "Schedule Host Label Value"
+        Biz And Website schedule host label
+
+    - variable: worker_host_label
+      label: "Worker Host Lable"
       required: true
+      default: "worker"
       type: "string"
       description: |
-        schedule host label value
+        worker schedule host label value
