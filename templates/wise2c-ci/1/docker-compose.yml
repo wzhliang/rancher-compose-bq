@@ -4,13 +4,11 @@ wise2build-frontend:
   tty: true
   labels:
     io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
 
 wise2build-biz:
   image: registry.aliyuncs.com/wise2c/build-biz:0.2-beta
   labels:
     io.rancher.container.pull_image: always
-    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
   links:
     - eureka-server
     - mysql-server
@@ -37,6 +35,13 @@ wise2build-worker:
 eureka-server:
   image: registry.aliyuncs.com/wise2c/eureka-server:0.2-beta
   tty: true
+  stdin_open: true
+
+document:
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: registry.aliyuncs.com/wise2c/document:0.2-beta
   stdin_open: true
 
 mysql-server:
@@ -77,27 +82,19 @@ sonarqube:
   links:
   - postgres-server:postgres-server
   stdin_open: true
-
-jforg-artifactory:
+  ports:
+  - ${sonarqube_http_port}:9000
   labels:
-    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
+
+artifactory:
+  labels:
     io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
   tty: true
   image: yunlzheng/artifactory-oss
   stdin_open: true
   ports:
   - ${artifactory_http_port}:8081
-
-sonarqube-lb:
-  ports:
-  - ${sonarqube_http_port}:9000
-  tty: true
-  image: rancher/load-balancer-service
-  labels:
-    io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
-  links:
-  - sonarqube:sonarqube
-  stdin_open: true
 
 wise2ci-vip:
   image: rancher/load-balancer-service
@@ -107,7 +104,9 @@ wise2ci-vip:
   links:
   - wise2build-frontend:wise2build-frontend
   - wise2build-biz:wise2build-biz
+  - document:document
   labels:
     io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
     io.rancher.loadbalancer.target.wise2build-frontend: ${http_port}=80
+    io.rancher.loadbalancer.target.document: ${http_port}/document=80
     io.rancher.loadbalancer.target.wise2build-biz: ${http_port}/api=80, ${http_port}/sockjs=80
