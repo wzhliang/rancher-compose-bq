@@ -1,0 +1,53 @@
+.catalog:
+  name: wise2c-ci
+  version: "0.2-beta"
+  description: |
+    Wise2c Continuous Integration Solution Platform
+  questions:
+    - variable: http_port
+      label: "Web Public Http Port"
+      type: "int"
+      required: true
+      default: 80
+      description: |
+        website public http port
+
+    - variable: sonarqube_http_port
+      label: "Sonarqube Web Public Http Port"
+      type: "int"
+      required: true
+      default: 9000
+      description: |
+        sonarqube website public http port
+
+    - variable: artifactory_http_port
+      label: "Artiactory Web Public Http Port"
+      type: "int"
+      required: true
+      default: 8081
+      description: |
+        sonarqube website public http port
+
+    - variable: biz_host_label
+      label: "WebSite Host Label"
+      required: true
+      type: "string"
+      default: "biz"
+      description: |
+        Biz And Website schedule host label
+
+    - variable: worker_host_label
+      label: "Worker Host Lable"
+      required: true
+      default: "worker"
+      type: "string"
+      description: |
+        worker schedule host label value
+
+    - variable: consul_ip
+      label: "Consul IP"
+      required: true
+      default: "0.0.0.0"
+      type: "string"
+      description: |
+        设置consol server的的IP,以便consul agent可以绑定server    
