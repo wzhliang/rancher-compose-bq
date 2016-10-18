@@ -50,4 +50,4 @@
       default: "0.0.0.0"
       type: "string"
       description: |
-        设置consol server的的IP,以便consul agent可以绑定server    
+        设置consul server的的IP,以便consul agent可以绑定server    
