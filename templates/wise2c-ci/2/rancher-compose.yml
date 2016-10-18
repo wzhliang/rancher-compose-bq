@@ -1,6 +1,6 @@
 .catalog:
   name: wise2c-ci
-  version: "0.2.1-beta"
+  version: "0.2-beta"
   description: |
     Wise2c Continuous Integration Solution Platform
   questions:
@@ -44,10 +44,3 @@
       description: |
         worker schedule host label value
 
-    - variable: consul_ip
-      label: "Consul IP"
-      required: true
-      default: "0.0.0.0"
-      type: "string"
-      description: |
-        设置consul server的的IP,以便consul agent可以绑定server    
