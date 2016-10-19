@@ -51,11 +51,24 @@ document:
 
 mysql-server:
   image: mysql:5.5
+  volumes:
+  - /var/lib//biz-data-dir:/var/lib/mysql
   ports:
   - 3306:3306
   environment:
     MYSQL_ROOT_PASSWORD: my-secret-pw
     MYSQL_DATABASE: builderdb
+  tty: true
+  stdin_open: true
+  command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+mysql-server2:
+  image: mysql:5.5
+  environment:
+    MYSQL_ROOT_PASSWORD: password
+    MYSQL_DATABASE: workerdb
+  volumes:
+  - /var/lib//worker-data-dir:/var/lib/mysql
   tty: true
   stdin_open: true
   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

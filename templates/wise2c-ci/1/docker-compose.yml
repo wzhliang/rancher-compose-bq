@@ -48,11 +48,11 @@ document:
 
 mysql-server:
   image: mysql:5.5
-  ports:
-  - 3306:3306
   environment:
     MYSQL_ROOT_PASSWORD: my-secret-pw
     MYSQL_DATABASE: builderdb
+  volumes:
+  - /var/lib//biz-data-dir:/var/lib/mysql
   tty: true
   stdin_open: true
   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
