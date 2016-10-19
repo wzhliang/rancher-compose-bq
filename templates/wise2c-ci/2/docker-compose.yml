@@ -7,6 +7,8 @@ wise2build-frontend:
 
 wise2build-biz:
   image: registry.aliyuncs.com/wise2c/build-biz:0.2.1-beta
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
   labels:
     io.rancher.container.pull_image: always
   links:
