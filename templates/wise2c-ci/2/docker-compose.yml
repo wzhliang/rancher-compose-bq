@@ -26,6 +26,7 @@ wise2build-worker:
   links:
     - eureka-server
     - rabbitmq
+    - mysql-server2:mysql-server
   labels:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: wise2worker=${worker_host_label}
