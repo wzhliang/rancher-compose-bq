@@ -7,14 +7,8 @@
     - variable: "mysql_database"
       type: string
       required: true
-      label: "Virtual Floating IP Address"
-      description: "Virtual IP address given to the HA-Proxy Cluster"
-    - variable: "mysql_root_password"
-      type: string
-      required: true
-      label: "Netmask Bit"
-      description: "Network mask bits for the Virtual IP address"
-      default: "16"
+      label: "数据库名称"
+      description: "默认初始化的数据库名"
     - variable: "server_character"
       type: string
       label: "数据库编码t"
