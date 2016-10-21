@@ -5,42 +5,37 @@
     Wise2c Continuous Integration Solution Platform
   questions:
     - variable: http_port
-      label: "Web Public Http Port"
+      label: "Web开放端口"
       type: "int"
       required: true
       default: 80
       description: |
-        website public http port
-
+        WiseBuild开放访问端口
     - variable: sonarqube_http_port
-      label: "Sonarqube Web Public Http Port"
+      label: "Sonarqube开放端口"
       type: "int"
       required: true
       default: 9000
       description: |
-        sonarqube website public http port
-
+        sonarqube质量管理平台的开放端口
     - variable: artifactory_http_port
-      label: "Artiactory Web Public Http Port"
+      label: "Artiactory开放端口"
       type: "int"
       required: true
       default: 8081
       description: |
-        sonarqube website public http port
-
+        Artifactory构建物管理的开放端口
     - variable: biz_host_label
-      label: "WebSite Host Label"
+      label: "Biz服务调度主机label值"
       required: true
       type: "string"
       default: "biz"
       description: |
-        Biz And Website schedule host label
-
+        请添加主机的label"wise2biz"
     - variable: worker_host_label
-      label: "Worker Host Lable"
+      label: "Worker调度主机label值"
       required: true
       default: "worker"
       type: "string"
       description: |
-        worker schedule host label value
-
+        请添加主机标签wise2worker
