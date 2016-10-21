@@ -1,0 +1,39 @@
+.catalog:
+  name: "Mysql Server for Rancher"
+  version: 5.5
+  description: |
+    Mysql Server for Rancher
+  questions:
+    - variable: "mysql_database"
+      type: string
+      required: true
+      label: "Virtual Floating IP Address"
+      description: "Virtual IP address given to the HA-Proxy Cluster"
+    - variable: "mysql_root_password"
+      type: string
+      required: true
+      label: "Netmask Bit"
+      description: "Network mask bits for the Virtual IP address"
+      default: "16"
+    - variable: "server_character"
+      type: string
+      label: "数据库编码t"
+      default: "utf8mb4"
+      required: true
+    - variable: "server_collation"
+      type: string
+      label: "数据库编码校对"
+      required: true
+      default: "utf8mb4_unicode_ci"
+    - variable: "mysql_user"
+      type: string
+      label: "数据库用户名"
+      required: true
+    - variable: "mysql_password"
+      type: string
+      label: "数据库登录密码"
+      required: true
+    - variable: "mysql_allow_empty_password"
+      type: boolean
+      label: "是否允许root使用空密码登录"
+      default: true
