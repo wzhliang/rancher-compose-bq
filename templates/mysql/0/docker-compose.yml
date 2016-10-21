@@ -1,7 +1,7 @@
 mysql:
   image: mysql:5.5
   ports:
-    - "3306:3306"
+    - ${mysql_public_port}:3306
   environment:
     - MYSQL_ALLOW_EMPTY_PASSWORD=${mysql_allow_empty_password}
     - MYSQL_USER=${mysql_user}
