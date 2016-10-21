@@ -1,44 +1,42 @@
 .catalog:
-  name: "Mysql Server for Rancher"
-  version: "5.5"
-  description: |
-    Mysql Server数据库服务
+  name: Mysql Server for Rancher
+  version: 5.5
+  description: Mysql Server
   questions:
     - variable: mysql_public_port
-      label: "外部访问端口"
-      type: "int"
+      label: Mysql Public Port
+      type: int
       required: true
       default: 3306
-      description: |
-        外部访问端口
+      description: "Mysql Public Port"
     - variable: mysql_database
       type: "string"
       required: true
-      label: "数据库名称"
-      description: "默认初始化的数据库名"
+      label: "Mysql Database Name"
+      description: "Mysql Database Name"
     - variable: server_character
       type: "string"
-      label: "数据库编码"
+      label: "Mysql Server Character"
       default: "utf8mb4"
-      description: "数据库编码字符集"
+      description: "Mysql Server Character"
       required: true
     - variable: server_collation
       type: "string"
-      label: "数据库编码校对"
+      label: "Mysql Server Collation"
       required: true
       default: "utf8mb4_unicode_ci"
-      description: "数据库编码校对"
+      description: "Mysql Server Collation"
     - variable: mysql_user
       type: "string"
-      label: "数据库用户名"
+      label: "Mysql User"
       required: true
     - variable: mysql_password
       type: "string"
-      label: "数据库登录密码"
+      label: "Mysql Password"
       required: true
-      description: "数据库登录密码"
+      description: "Mysql Password"
     - variable: mysql_allow_empty_password
       type: "boolean"
-      label: "是否允许root使用空密码登录"
+      label: "Allow Empty Password"
       default: true
-      description: "是否允许root使用空密码登录"
+      description: "Allow Empty Password"
