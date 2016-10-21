@@ -112,8 +112,6 @@ artifactory:
   tty: true
   image: yunlzheng/artifactory-oss
   stdin_open: true
-  ports:
-  - ${artifactory_http_port}:8081
 
 wise2ci-vip:
   image: rancher/load-balancer-service
