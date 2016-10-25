@@ -1,5 +1,5 @@
-name: Wise2CD
+name: WiseBuild
 description: |
-  Wise2c Continuous Integration Solution Platform
+  Wise2c CI/CD Platform
 version: v0.1
 category: CI
