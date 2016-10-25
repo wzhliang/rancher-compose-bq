@@ -12,7 +12,7 @@ wise2build-biz:
   labels:
     io.rancher.container.pull_image: always
   links:
-    - consul
+    - eureka-server
     - mysql-server
     - rabbitmq
     - redis
@@ -24,7 +24,7 @@ wise2build-worker:
   stdin_open: true
   tty: true
   links:
-    - consul
+    - eureka-server
     - rabbitmq
     - mysql-server2:mysql-server
   labels:
@@ -35,7 +35,7 @@ wise2build-worker:
     - /root/.jenkins/workspace:/root/.jenkins/workspace
     - /root/.jenkins/jobs:/root/.jenkins/jobs
 
-consul:
+eureka-server:
   image: 10.50.81.126/foresealife/consul
   ports:
     - 8400:8400
