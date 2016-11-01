@@ -1,12 +1,12 @@
 wise2build-frontend:
-  image: 10.50.81.126/wise2c/wisebuild-fronted:0.2.1-beta
+  image: 10.50.81.126/wise2c/wisebuild-fronted:0.2.5-beta
   stdin_open: true
   tty: true
   labels:
     io.rancher.container.pull_image: always
 
 wise2build-biz:
-  image: 10.50.81.126/wise2c/build-biz:0.2.1-beta
+  image: 10.50.81.126/wise2c/build-biz:0.2.5-beta
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
   labels:
@@ -20,7 +20,7 @@ wise2build-biz:
   stdin_open: true
 
 wise2build-worker:
-  image: 10.50.81.126/wise2c/build-worker:0.2.1-beta
+  image: 10.50.81.126/wise2c/build-worker:0.2.5-beta
   stdin_open: true
   tty: true
   links:
