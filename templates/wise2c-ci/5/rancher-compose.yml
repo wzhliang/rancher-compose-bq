@@ -1,0 +1,34 @@
+.catalog:
+  name: wise2c-ci-qhlife
+  version: "1.0.0-qhlife"
+  description: |
+    Wise2c Continuous Integration Solution Platform
+  questions:
+    - variable: http_port
+      label: "Http Port"
+      type: "int"
+      required: true
+      default: 80
+      description: |
+        WiseBuild Public Http Port
+    - variable: sonarqube_http_port
+      label: "Sonarqube Public Port"
+      type: "int"
+      required: true
+      default: 9000
+      description: |
+        sonarqube Public Web Port
+    - variable: biz_host_label
+      label: "Biz Host Label Value"
+      required: true
+      type: "string"
+      default: "biz"
+      description: |
+        Please add host label "wise2biz"
+    - variable: worker_host_label
+      label: "Worker Host Label Value"
+      required: true
+      default: "worker"
+      type: "string"
+      description: |
+        Please add host label wise2worker
