@@ -110,7 +110,7 @@ artifactory:
   labels:
     io.rancher.scheduler.affinity:host_label: wise2biz=${biz_host_label}
   tty: true
-  image: 10.80.6.45/library/yunlzheng/artifactory-oss
+  image: 10.80.6.45/library/artifactory-oss
   stdin_open: true
 
 wise2ci-vip:
