@@ -1,6 +1,6 @@
 .catalog:
-  name: wise2c-ci-qhlife
-  version: "1.0.1-qhlife"
+  name: wise2c-ci
+  version: "1.0.1-baiqian"
   description: |
     Wise2c Continuous Integration Solution Platform
   questions:
