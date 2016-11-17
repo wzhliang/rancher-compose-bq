@@ -36,7 +36,7 @@ wise2build-worker:
     - /root/.jenkins/jobs:/root/.jenkins/jobs
 
 eureka-server:
-  image: 10.80.6.50/library/consul
+  image: 10.80.6.50/library/consul:0.7.0
   ports:
     - 8400:8400
     - 8500:8500
